@@ -15,9 +15,6 @@ public class Tuple{
 		col1 = dataTypeLine.split(comma);
 		col2 = tupleLine.split(comma);
 		attributeList = new ArrayList<Attribute>();
-		this.setAttributeName();
-		this.setAttributeType();
-		this.setAttributeValue();
 	}
 	
 	public Tuple(ArrayList<Attribute> attributeJoinList){

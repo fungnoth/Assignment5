@@ -51,6 +51,9 @@ public class Table extends Operator{
 				}
 				tuple = new Tuple(attributeLine, dataTypeLine, valueLine);
 			}
+			tuple.setAttributeName();
+			tuple.setAttributeType();
+			tuple.setAttributeValue();
 		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

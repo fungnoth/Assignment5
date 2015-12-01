@@ -6,7 +6,7 @@ public class Join extends Operator{
 	private ArrayList<Attribute> newAttributeList;
 	private String joinPredicate;
 	ArrayList<Tuple> tuples1;
-	ArrayList<Tuple> left = new ArrayList<Tuple>();
+	ArrayList<Tuple> left = null;
 
 	
 	//Join Constructor, join fill
@@ -16,15 +16,7 @@ public class Join extends Operator{
 		this.joinPredicate = joinPredicate;
 		newAttributeList = new ArrayList<Attribute>();
 		tuples1 = new ArrayList<Tuple>();
-		Tuple tmp1;
 
-		while(true){
-			tmp1 = leftChild.next();
-			if( tmp1 == null ){
-				break;
-			}
-			left.add(tmp1);
-		}
 	}
 
 	
@@ -40,6 +32,17 @@ public class Join extends Operator{
 		Tuple tmp2 = rightChild.next();
 		boolean willJoin = false;
 		ArrayList<Attribute> attrList = new ArrayList<Attribute>();
+
+		if(left == null){
+			left = new ArrayList<Tuple>();
+			while(true){
+			tmp1 = leftChild.next();
+			if( tmp1 == null ){
+				break;
+			}
+			left.add(tmp1);
+			}
+		}
 
 		if(tmp2 == null){
 			return null;
